@@ -433,6 +433,11 @@ static void malta_fpga_write(void *opaque, hwaddr addr,
     saddr = (addr & 0xfffff);
 
     switch (saddr) {
+    /* Simulator Exit Request Register */
+    case 0x00100:
+        fprintf(stderr,"Simulator Exit Request: %ld\n", val);
+        exit(10);
+        break;
 
     /* SWITCH Register */
     case 0x00200:
